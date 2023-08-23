@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/login_frag">
+
+    <fragment
+        android:id="@+id/login_frag"
+        android:name="com.snhustudent.ontime.views.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_event_list"
+            app:destination="@id/eventList" />
+        <action
+            android:id="@+id/action_login_to_register"
+            app:destination="@id/register_frag" />
+    </fragment>
+    <fragment
+        android:id="@+id/register_frag"
+        android:name="com.snhustudent.ontime.views.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_register_to_event_list"
+            app:destination="@id/eventList" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventList"
+        android:name="com.snhustudent.ontime.views.EventListFragment"
+        android:label="fragment_list"
+        tools:layout="@layout/fragment_event_list" >
+        <action
+            android:id="@+id/action_to_add_event"
+            app:destination="@id/addEvent"
+            >
+        </action>
+        <action
+            android:id="@+id/action_event_list_to_permissions"
+            app:destination="@id/permissions"
+            app:popUpTo="@id/eventList" />
+    </fragment>
+    <fragment
+        android:id="@+id/edit_event_dialog"
+        android:name="com.snhustudent.ontime.views.EventListFragment"
+        android:label="fragment_event_dialog"
+        tools:layout="@layout/dialog_edit_layout" >
+        <action
+            android:id="@+id/event_updated_or_canceled"
+            app:destination="@id/eventList"/>
+    </fragment>
+    <fragment
+        android:id="@+id/addEvent"
+        android:name="com.snhustudent.ontime.views.AddEventFragment"
+        android:label="fragment_add"
+        tools:layout="@layout/fragment_add_event" >
+        <action
+            android:id="@+id/action_event_saved"
+            app:destination="@id/eventList" />
+    </fragment>
+    <action android:id="@+id/action_global_addEvent" app:destination="@id/addEvent" />
+    <activity
+        android:id="@+id/permissions"
+        android:name="com.snhustudent.ontime.views.Permissions"
+        android:label="fragment_request_permissions"
+        tools:layout="@layout/fragment_request_permissions" />
+
+</navigation>
